@@ -25,33 +25,22 @@ function stringToBytes(string) {
 //the bluefruit UART Service
 var blue ={
 	serviceUUID: '6e400001-b5a3-f393-e0a9-e50e24dcca9e',
+	device.id: 'E5:80:2C:80:FC:C7'
     txCharacteristic: '6e400002-b5a3-f393-e0a9-e50e24dcca9e', // transmit is from the phone's perspective
     rxCharacteristic: '6e400003-b5a3-f393-e0a9-e50e24dcca9e'  // receive is from the phone's perspective
 }
 
 var ConnDeviceId;
-var deviceList =[];
- 
+
 function onLoad(){
 	document.addEventListener('deviceready', onDeviceReady, false);
     bleDeviceList.addEventListener('touchstart', conn, false); // assume not scrolling
 }
 
-function autoconnect()
-{
-ble.autoConnect('E5:80:2C:80:FC:C7', connectCallback, disconnectCallback);
+function onDeviceReady(){
+	ble.autoConnect(device.id, connectCallback, disconnectCallback);
 }
 
-
-
-function conn(){
-	var  deviceTouch= event.srcElement.innerHTML;
-	document.getElementById("debugDiv").innerHTML =""; // empty debugDiv
-	var deviceTouchArr = deviceTouch.split(",");
-	ConnDeviceId = deviceTouchArr[1];
-	document.getElementById("debugDiv").innerHTML += "<br>"+deviceTouchArr[0]+"<br>"+deviceTouchArr[1]; //for debug:
-	ble.connect(ConnDeviceId, onConnect, onConnError);
- }
  
  //succes
 function onConnect(){
