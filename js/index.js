@@ -25,7 +25,7 @@ function stringToBytes(string) {
 //the bluefruit UART Service
 var blue ={
 	serviceUUID: '6e400001-b5a3-f393-e0a9-e50e24dcca9e',
-	device.id: 'E5:80:2C:80:FC:C7'
+	device.id: 'E5:80:2C:80:FC:C7',
     txCharacteristic: '6e400002-b5a3-f393-e0a9-e50e24dcca9e', // transmit is from the phone's perspective
     rxCharacteristic: '6e400003-b5a3-f393-e0a9-e50e24dcca9e'  // receive is from the phone's perspective
 }
