@@ -37,35 +37,11 @@ function onLoad(){
     bleDeviceList.addEventListener('touchstart', conn, false); // assume not scrolling
 }
 
-function onDeviceReady(){
-	refreshDeviceList();
+function autoconnect()
+{
+ble.autoConnect('Emil,E5:80:2C:80:FC:C7', connectCallback, disconnectCallback);
 }
 
-	 
-function refreshDeviceList(){
-	//deviceList =[];
-	document.getElementById("bleDeviceList").innerHTML = ''; // empties the list
-	if (cordova.platformId === 'android') { // Android filtering is broken
-		ble.scan([], 5, onDiscoverDevice, onError);
-	} else {
-		//alert("Disconnected");
-		ble.scan([blue.serviceUUID], 5, onDiscoverDevice, onError);
-	}
-}
-
-
-function onDiscoverDevice(device){
-	//Make a list in html and show devises
-		
-		var listItem = document.createElement('li');
-		if (device.name != undefined){
-				html = device.name+ "," + device.id;
-				listItem.innerHTML = html;
-				document.getElementById("bleDeviceList").appendChild(listItem);
-		}
-
-		
-}
 
 
 function conn(){
