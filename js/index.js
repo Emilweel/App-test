@@ -39,7 +39,7 @@ function onLoad(){
 
 function autoconnect()
 {
-ble.autoConnect('Emil,E5:80:2C:80:FC:C7', connectCallback, disconnectCallback);
+ble.autoConnect('E5:80:2C:80:FC:C7', connectCallback, disconnectCallback);
 }
 
 
